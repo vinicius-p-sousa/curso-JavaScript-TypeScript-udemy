@@ -1,0 +1,98 @@
+:root {
+  --primary-color: #2e2e2e;
+  --secondary-color: #f7df1e;
+  --secondary-color-darker: #dfc500;
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body{
+  color: white;
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-color);
+  font-size: 1.3em;
+  line-height: 1.5em;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: var(--secondary-color);
+  font-size: 2em;
+  text-align: center;
+}
+
+.container {
+  max-width: 740px;
+  
+  margin: 50px auto;
+  padding: 20px;
+}
+
+form, form input, form label, form button{
+  display: block;
+  width: 100%;
+  padding: 20px 0px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+form input:focus{
+  outline: 4px solid var(--secondary-color);
+  
+}
+
+form button {
+  border: none;
+  background-color: var(--secondary-color);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 50px;
+  width: 40%;
+  margin: 40px auto;
+}
+
+form button:hover {
+  background-color: var(--secondary-color-darker);
+}
+
+.timer {
+  font-size: 6rem;
+  text-align: center;
+  padding: 25px;
+  margin: 10px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons > button {
+  padding: 20px;
+  margin: 10px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: none;
+
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.iniciar {
+  background-color: #008000;
+}
+
+.pausar{
+  background-color: #ff0000;
+}
+  
+.zerar {
+  background-color: #ffae00;
+}

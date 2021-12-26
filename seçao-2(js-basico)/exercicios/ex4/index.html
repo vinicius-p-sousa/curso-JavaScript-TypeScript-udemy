@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exercicio 4</title>
+  <style>
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: larger;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <script>
+    const nome = prompt('qual o seu nome completo?')
+    document.body.innerHTML += `o seu nome é: <strong>${nome}</strong> <br>`
+    document.body.innerHTML += `seu nome tem <strong>${nome.length}</strong> letras<br>`
+    document.body.innerHTML += `A segunda letra do seu nome é: <strong>${nome.charAt(1)}</strong> <br>`
+    document.body.innerHTML += `o primeiro indice da letra A no seu nome? <strong>${nome.indexOf('a')}</strong> <br>`
+    document.body.innerHTML += `o ultimo indice da letra A no seu nome <strong>${nome.lastIndexOf('a')}</strong> <br>`
+    document.body.innerHTML += `as ultimas 3 letras são: <strong>${nome.slice(-3)}</strong> <br>`
+    document.body.innerHTML += `as palavras do seu nome são <strong>${nome.split(' ')}</strong> <br>`
+    document.body.innerHTML += `seu nome em maiusculo: <strong>${nome.toUpperCase()}</strong> <br>`
+    document.body.innerHTML += `seu nome em minusculo: <strong>${nome.toLowerCase()}</strong> <br>`
+  </script>
+</body>
+</html>

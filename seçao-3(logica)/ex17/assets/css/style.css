@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(0,106,247);
+  background: linear-gradient(0deg, rgba(0,106,247,1) 0%, rgba(0,205,247,1) 100%);
+
+  min-height: 100vh;
+  margin: 25px;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2rem;
+}
+
+.container {
+  background-color: #fff;
+  min-height: 80vh;
+  width: 50%;
+  margin: 0 auto;
+
+  border-radius: 20px;
+  padding: 15px 25px;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 5px 15px;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 10 0 0 0;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  font-size: 2rem;
+  border-radius: 25px;
+  width: 85%;
+  border: #000 2px solid;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 5px;
+}
+
+.add-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 3rem;
+  color: #000;
+}
+
+.btn-add-task {
+
+  font-size: 4rem;
+  color: #000;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  width: 47px;
+  height: 47px;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  font-size: 3rem;
+  color: #000;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  color: #444444;
+  font-size: 3rem;
+
+}
+
+li{
+  display: flex;
+  list-style: none;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 85%;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+
+  .tasks {
+    font-size: 2rem;
+  }
+
+  .btn-add-task {
+  font-size: 3rem;
+}
+}

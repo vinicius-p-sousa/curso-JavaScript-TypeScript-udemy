@@ -1,8 +1,8 @@
 // fetch e axios
-axios('pessoas.jso')
+axios('pessoas.json')
   .then(resposta => carregaElementosNaPagina(resposta.data))
-  
 
+  
   function carregaElementosNaPagina (json) {
     const table = document.createElement('table')
     for (const pessoa of json) {

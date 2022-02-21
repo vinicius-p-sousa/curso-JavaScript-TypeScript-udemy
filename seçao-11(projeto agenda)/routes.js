@@ -1,11 +1,25 @@
 const express = require('express')
 const route = express.Router()
-const homeControler = require('./src/controllers/homeController')
-const contatoControler = require('./src/controllers/contatoControler')
+const homeController = require('./src/controllers/homeController')
+const loginController = require('./src/controllers/loginController')
+const contactController = require('./src/controllers/contactController')
 
-route.get('/', homeControler.paginaInicial)
-route.post('/', homeControler.trataPost)
+const { loginRequired } = require('./src/middlewares/middleware')
 
+// homa rotes 
+route.get('/', loginRequired, homeController.index)
 
-route.get('/contato', contatoControler.paginaInicial)
+// account rotes 
+route.get('/account', loginController.index)
+route.post('/account/register', loginController.register)
+route.post('/account/login', loginController.login)
+route.get('/account/logout', loginController.logout)
+
+// contact rotes 
+route.get('/contact', loginRequired, contactController.index)
+route.post('/contact/register', loginRequired, contactController.register)
+route.get('/contact/edit/:id', loginRequired, contactController.editContact)
+route.post('/contact/edit/:id', loginRequired, contactController.edit)
+route.get('/contact/delete/:id', loginRequired, contactController.delete)
+
 module.exports = route

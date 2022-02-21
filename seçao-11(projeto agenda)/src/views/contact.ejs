@@ -1,0 +1,52 @@
+<%- include('includes/head') %>
+<%- include('includes/navbar') %>
+
+<% if (!user) { %>
+<%- res.redirect('/account') %>
+<% } %>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Contato</h1>
+      <p class="text-center lead">crie ou edite seu contato</p>
+
+      <%- include('includes/messages') %>
+
+      <% if (contact.id) {%>
+      <form action="/contact/edit/<%= contact._id %>" method="post">
+        <% } else { %>
+        <form action="/contact/register" method="post">
+          <% } %>
+          <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+          <input type="hidden" name="createdBy" value=<%= userId %>>
+          <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input value="<%= contact.name %>" type="text" class="form-control" id="name" name="name">
+          </div>
+
+          <div class="mb-3">
+            <label for="surname" class="form-label">sobrenome</label>
+            <input type="text" value="<%= contact.surname %>" class="form-control" id="surname" name="surname">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">E-mail</label>
+            <input type="email" value="<%= contact.email %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+          </div>
+
+          <div class="mb-3">
+            <label for="tel" class="form-label">Telefone</label>
+            <input type="tel" value="<%= contact.tel %>" class="form-control" id="tel" name="tel">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+
+        <div class="col-lg-2"></div>
+    </div>
+  </div>
+
+  <%- include('includes/footer') %>

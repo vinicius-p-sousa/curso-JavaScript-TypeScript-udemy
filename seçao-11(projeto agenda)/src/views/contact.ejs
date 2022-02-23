@@ -24,22 +24,22 @@
           <input type="hidden" name="createdBy" value=<%= userId %>>
           <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input value="<%= contact.name %>" type="text" class="form-control" id="name" name="name">
+            <input placeholder="nome" value="<%= contact.name %>" type="text" class="form-control needed" id="name" name="name">
           </div>
 
           <div class="mb-3">
             <label for="surname" class="form-label">sobrenome</label>
-            <input type="text" value="<%= contact.surname %>" class="form-control" id="surname" name="surname">
+            <input placeholder="sobrenome" type="text" value="<%= contact.surname %>" class="form-control" id="surname" name="surname">
           </div>
 
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">E-mail</label>
-            <input type="email" value="<%= contact.email %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+            <label for="contactEmail" class="form-label">E-mail</label>
+            <input type="email" placeholder="exemplo@exemplo.com" value="<%= contact.email %>" class="form-control" id="contactEmail" aria-describedby="emailHelp" name="email">
           </div>
 
           <div class="mb-3">
             <label for="tel" class="form-label">Telefone</label>
-            <input type="tel" value="<%= contact.tel %>" class="form-control" id="tel" name="tel">
+            <input type="tel" placeholder="99999-9999" value="<%= contact.tel %>" class="form-control" id="tel" name="tel" onblur="telMask(this)">
           </div>
 
           <button type="submit" class="btn btn-primary">Salvar</button>
@@ -48,5 +48,6 @@
         <div class="col-lg-2"></div>
     </div>
   </div>
+</div>
 
-  <%- include('includes/footer') %>
+<%- include('includes/footer') %>

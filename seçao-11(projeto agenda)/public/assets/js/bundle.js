@@ -19302,23 +19302,150 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
-var inputs = document.getElementsByTagName('input'); // console.log(inputs);
+document.querySelectorAll('form').forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    var errors = verifyInputs(e.target);
 
-var _iterator = _createForOfIteratorHelper(inputs),
-    _step;
+    if (errors.length > 0) {
+      errorMessage(errors);
+      e.preventDefault();
+      return;
+    }
+  });
+});
 
-try {
-  for (_iterator.s(); !(_step = _iterator.n()).done;) {
-    var input = _step.value;
+function verifyInputs(inputs) {
+  var errors = [];
 
-    if (input.type !== 'hidden') {// validar todos os inputs email password nome username, qualquer um e tratar de diferentes formas com cada tipo de dado que deve ser enviado
+  var _iterator = _createForOfIteratorHelper(inputs),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var input = _step.value;
+      if (input.type === 'hidden') continue;
+      if (input.type === 'submit') continue;
+
+      if (input.type === 'email') {
+        verifyEmail(input, errors);
+      }
+
+      if (input.type === 'password') {
+        verifyPassword(input, errors);
+      }
+
+      if (input.type === 'text') {
+        verifyText(input, errors);
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return errors;
+}
+
+function verifyEmail(input, errors) {
+  if (input.classList.contains('needed')) {
+    if (input.value === '') {
+      errors.push('e-mail deve ser enviado.');
+      return;
     }
   }
-} catch (err) {
-  _iterator.e(err);
-} finally {
-  _iterator.f();
+
+  if (input.value) {
+    input.value.trim();
+    var emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
+
+    if (!emailRegex.test(input.value)) {
+      errors.push('email invalido.');
+    }
+  }
+
+  return;
 }
+
+function verifyPassword(input, errors) {
+  if (input.classList.contains('needed')) {
+    if (input.value === '') {
+      errors.push('senha deve ser enviada.');
+      return;
+    }
+  }
+
+  input.value.trim();
+
+  if (input.value.length < 3 || input.value.length > 50) {
+    errors.push('senha deve ter entre 3 e 50 caracteres.');
+    return;
+  }
+
+  return;
+}
+
+function verifyText(input, errors) {
+  if (input.classList.contains('needed')) {
+    if (input.value === '') {
+      errors.push("".concat(input.placeholder, " deve ser enviada."));
+      return;
+    }
+
+    input.value.trim();
+
+    if (input.value.length > 5 && input.length < 25) {
+      errors.push("".concat(input.placeholder, " deve ter entre 5 e 20 caracteres."));
+      return;
+    }
+  }
+
+  return;
+}
+
+function errorMessage(errors) {
+  var errorContainer = document.querySelector('.error-message');
+
+  if (errorContainer) {
+    errorContainer.parentNode.removeChild(errorContainer);
+  }
+
+  var p = document.querySelector('p.text-center');
+  errorContainer = document.createElement('div');
+  errorContainer.classList.add('row', 'error-message');
+  var errorBox = document.createElement('div');
+  errorBox.classList.add('col', 'my-3');
+  var errorText = document.createElement('div');
+  errorText.classList.add('alert', 'alert-danger');
+  errors.forEach(function (err) {
+    errorText.innerHTML += "".concat(err, " <br>");
+  });
+  errorBox.appendChild(errorText);
+  errorContainer.appendChild(errorBox);
+  p.insertAdjacentElement('afterend', errorContainer);
+}
+
+function telMask(telInput) {
+  console.log(telInput.value);
+
+  if (telInput.value.length === 9) {
+    var part1 = telInput.value.slice(0, 5);
+    var part2 = telInput.value.slice(5, 9);
+    telInput.value = "".concat(part1, "-").concat(part2);
+  } else if (telInput.value.length === 8) {
+    var _part = telInput.value.slice(0, 4);
+
+    var _part2 = telInput.value.slice(4, 8);
+
+    telInput.value = "".concat(_part, "-").concat(_part2);
+  }
+
+  return telInput.value;
+}
+
+document.querySelector('#tel').addEventListener('blur', function (e) {
+  return telMask(e.target);
+});
 })();
 
 /******/ })()

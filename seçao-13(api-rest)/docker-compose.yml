@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  escoladb:
+    container_name: escoladb
+    hostname: escoladb
+    image: mysql:8.0
+    restart: always
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --innodb_force_recovery=0
+    volumes:
+      - ~/.MySQLDBData/mysqlonly/escoladb:/var/lib/mysql
+    cap_add:
+      - SYS_NICE
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: escola
+      MYSQL_USER: vinicius
+      MYSQL_PASSWORD: 1234
+      TZ: America/Sao_Paulo

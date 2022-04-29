@@ -1,6 +1,9 @@
+import dotenv from 'dotenv';
 import app from './app';
 
-const port = 3000;
+dotenv.config();
+
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log();
   console.log('Pai tá ON!!! na porta', port);

@@ -1,13 +1,13 @@
-import Aluno from '../models/Aluno';
-import Picture from '../models/Picture';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Aluno = require('../models/Aluno'); var _Aluno2 = _interopRequireDefault(_Aluno);
+var _Picture = require('../models/Picture'); var _Picture2 = _interopRequireDefault(_Picture);
 
 class AlunoController {
   async index(req, res) {
-    const alunos = await Aluno.findAll({
+    const alunos = await _Aluno2.default.findAll({
       attributes: ['id', 'nome', 'sobrenome', 'email', 'peso', 'altura'],
-      order: [['id', 'DESC'], [Picture, 'id', 'DESC']],
+      order: [['id', 'DESC'], [_Picture2.default, 'id', 'DESC']],
       include: {
-        model: Picture,
+        model: _Picture2.default,
         attributes: ['original_name', 'file_name', 'url'],
       },
     });
@@ -23,11 +23,11 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id, {
+      const aluno = await _Aluno2.default.findByPk(id, {
         attributes: ['id', 'nome', 'sobrenome', 'email', 'peso', 'altura'],
-        order: [['id', 'DESC'], [Picture, 'id', 'DESC']],
+        order: [['id', 'DESC'], [_Picture2.default, 'id', 'DESC']],
         include: {
-          model: Picture,
+          model: _Picture2.default,
           attributes: ['original_name', 'file_name', 'url'],
         },
       });
@@ -50,7 +50,7 @@ class AlunoController {
     try {
       const {
         id, nome, sobrenome, email, idade, peso, altura,
-      } = await Aluno.create(req.body);
+      } = await _Aluno2.default.create(req.body);
       return res.json({
         id, nome, sobrenome, email, idade, peso, altura,
       });
@@ -70,7 +70,7 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id);
+      const aluno = await _Aluno2.default.findByPk(id);
       if (!aluno) {
         return res.status(400).json({
           errors: ['aluno não existe'],
@@ -99,7 +99,7 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id);
+      const aluno = await _Aluno2.default.findByPk(id);
       if (!aluno) {
         return res.status(400).json({
           errors: ['aluno não existe'],
@@ -115,4 +115,4 @@ class AlunoController {
   }
 }
 
-export default new AlunoController();
+exports. default = new AlunoController();

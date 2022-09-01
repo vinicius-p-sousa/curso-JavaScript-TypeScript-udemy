@@ -33,7 +33,7 @@ export default class Picture extends Model {
       {
         sequelize,
         tableName: 'pictures',
-      },
+      }
     );
     return this;
   }

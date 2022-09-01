@@ -5,7 +5,10 @@ class AlunoController {
   async index(req, res) {
     const alunos = await Aluno.findAll({
       attributes: ['id', 'nome', 'sobrenome', 'email', 'peso', 'altura'],
-      order: [['id', 'DESC'], [Picture, 'id', 'DESC']],
+      order: [
+        ['id', 'DESC'],
+        [Picture, 'id', 'DESC'],
+      ],
       include: {
         model: Picture,
         attributes: ['original_name', 'file_name', 'url'],
@@ -25,7 +28,10 @@ class AlunoController {
 
       const aluno = await Aluno.findByPk(id, {
         attributes: ['id', 'nome', 'sobrenome', 'email', 'peso', 'altura'],
-        order: [['id', 'DESC'], [Picture, 'id', 'DESC']],
+        order: [
+          ['id', 'DESC'],
+          [Picture, 'id', 'DESC'],
+        ],
         include: {
           model: Picture,
           attributes: ['original_name', 'file_name', 'url'],
@@ -48,11 +54,16 @@ class AlunoController {
 
   async store(req, res) {
     try {
-      const {
-        id, nome, sobrenome, email, idade, peso, altura,
-      } = await Aluno.create(req.body);
+      const { id, nome, sobrenome, email, idade, peso, altura } =
+        await Aluno.create(req.body);
       return res.json({
-        id, nome, sobrenome, email, idade, peso, altura,
+        id,
+        nome,
+        sobrenome,
+        email,
+        idade,
+        peso,
+        altura,
       });
     } catch (e) {
       return res.status(400).json({
@@ -77,11 +88,16 @@ class AlunoController {
         });
       }
 
-      const {
-        nome, sobrenome, email, idade, peso, altura,
-      } = await aluno.update(req.body);
+      const { nome, sobrenome, email, idade, peso, altura } =
+        await aluno.update(req.body);
       return res.json({
-        id, nome, sobrenome, email, idade, peso, altura,
+        id,
+        nome,
+        sobrenome,
+        email,
+        idade,
+        peso,
+        altura,
       });
     } catch (e) {
       return res.status(400).json({

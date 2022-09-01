@@ -9,4 +9,6 @@ const models = [_Aluno2.default, _User2.default, _Picture2.default];
 const connection = new (0, _sequelize.Sequelize)(_database2.default);
 
 models.forEach((model) => model.init(connection));
-models.forEach((model) => model.associate && model.associate(connection.models));
+models.forEach(
+  (model) => model.associate && model.associate(connection.models)
+);

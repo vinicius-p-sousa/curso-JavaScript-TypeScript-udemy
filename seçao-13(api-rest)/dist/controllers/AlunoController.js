@@ -5,7 +5,10 @@ class AlunoController {
   async index(req, res) {
     const alunos = await _Aluno2.default.findAll({
       attributes: ['id', 'nome', 'sobrenome', 'email', 'peso', 'altura'],
-      order: [['id', 'DESC'], [_Picture2.default, 'id', 'DESC']],
+      order: [
+        ['id', 'DESC'],
+        [_Picture2.default, 'id', 'DESC'],
+      ],
       include: {
         model: _Picture2.default,
         attributes: ['original_name', 'file_name', 'url'],
@@ -25,7 +28,10 @@ class AlunoController {
 
       const aluno = await _Aluno2.default.findByPk(id, {
         attributes: ['id', 'nome', 'sobrenome', 'email', 'peso', 'altura'],
-        order: [['id', 'DESC'], [_Picture2.default, 'id', 'DESC']],
+        order: [
+          ['id', 'DESC'],
+          [_Picture2.default, 'id', 'DESC'],
+        ],
         include: {
           model: _Picture2.default,
           attributes: ['original_name', 'file_name', 'url'],
@@ -48,11 +54,16 @@ class AlunoController {
 
   async store(req, res) {
     try {
-      const {
-        id, nome, sobrenome, email, idade, peso, altura,
-      } = await _Aluno2.default.create(req.body);
+      const { id, nome, sobrenome, email, idade, peso, altura } =
+        await _Aluno2.default.create(req.body);
       return res.json({
-        id, nome, sobrenome, email, idade, peso, altura,
+        id,
+        nome,
+        sobrenome,
+        email,
+        idade,
+        peso,
+        altura,
       });
     } catch (e) {
       return res.status(400).json({
@@ -77,11 +88,16 @@ class AlunoController {
         });
       }
 
-      const {
-        nome, sobrenome, email, idade, peso, altura,
-      } = await aluno.update(req.body);
+      const { nome, sobrenome, email, idade, peso, altura } =
+        await aluno.update(req.body);
       return res.json({
-        id, nome, sobrenome, email, idade, peso, altura,
+        id,
+        nome,
+        sobrenome,
+        email,
+        idade,
+        peso,
+        altura,
       });
     } catch (e) {
       return res.status(400).json({

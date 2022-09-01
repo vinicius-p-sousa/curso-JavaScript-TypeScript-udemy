@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import multer from 'multer';
 import multerConfig from '../config/multerConfig';
 
@@ -15,13 +14,13 @@ class PictureController {
           errors: [error.code],
         });
       }
-      const { aluno_id } = req.body;
-      if (!aluno_id) {
+      const { alunoId } = req.body;
+      if (!alunoId) {
         return res.status(400).json({
           errors: ['id do aluno ausente'],
         });
       }
-      const alunoExiste = await Aluno.findByPk(aluno_id);
+      const alunoExiste = await Aluno.findByPk(alunoId);
       if (!alunoExiste) {
         return res.status(400).json({
           errors: ['aluno inexistente'],
@@ -31,7 +30,7 @@ class PictureController {
       const picture = await Picture.create({
         original_name: originalname,
         file_name: filename,
-        aluno_id,
+        alunoId,
       });
       return res.json(picture);
     });

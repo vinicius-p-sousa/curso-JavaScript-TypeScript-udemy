@@ -1,5 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }/* eslint-disable camelcase */
-var _multer = require('multer'); var _multer2 = _interopRequireDefault(_multer);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _multer = require('multer'); var _multer2 = _interopRequireDefault(_multer);
 var _multerConfig = require('../config/multerConfig'); var _multerConfig2 = _interopRequireDefault(_multerConfig);
 
 var _Picture = require('../models/Picture'); var _Picture2 = _interopRequireDefault(_Picture);
@@ -15,13 +14,13 @@ class PictureController {
           errors: [error.code],
         });
       }
-      const { aluno_id } = req.body;
-      if (!aluno_id) {
+      const { alunoId } = req.body;
+      if (!alunoId) {
         return res.status(400).json({
           errors: ['id do aluno ausente'],
         });
       }
-      const alunoExiste = await _Aluno2.default.findByPk(aluno_id);
+      const alunoExiste = await _Aluno2.default.findByPk(alunoId);
       if (!alunoExiste) {
         return res.status(400).json({
           errors: ['aluno inexistente'],
@@ -31,7 +30,7 @@ class PictureController {
       const picture = await _Picture2.default.create({
         original_name: originalname,
         file_name: filename,
-        aluno_id,
+        alunoId,
       });
       return res.json(picture);
     });

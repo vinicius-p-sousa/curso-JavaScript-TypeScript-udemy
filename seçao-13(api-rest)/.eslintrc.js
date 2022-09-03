@@ -10,6 +10,10 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+    plugins: {"prettier"},
+    rules: {
+      "prettier/prettier": "error"
+    }
   rules: {
     'no-console': 'off',
     'class-methods-use-this': 'off',

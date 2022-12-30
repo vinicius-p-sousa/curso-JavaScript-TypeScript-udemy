@@ -13,7 +13,7 @@ this is file is for organize all the routes on this project.
 - **post**: `localhost:8000/users` create a new user.
   - **body**: `{ name: string, email: string, password: string }`
 - **put**: `localhost:8000/users/:id` update a user - login is required.
-- **delete**: `localhost:8000/users/:id` delete a user - login is required.
+- **delete**: `localhost:8000/users/:id` delete a user - login is required.ssss
 
 ## Tokens
 
